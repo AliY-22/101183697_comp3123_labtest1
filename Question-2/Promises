@@ -6,5 +6,16 @@ const resolvedPromise = () => {
     });
 };
 
+const rejectedPromise = () => {
+    return new Promise((_, reject) => {
+        setTimeout(() => {
+            reject(new Error('delayed exception!'));
+        }, 500);
+    });
+};
+
 resolvedPromise()
 .then(result => console.log(result));
+
+rejectedPromise()
+.catch(error => console.log({ error: error.message }));
